@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -22,8 +23,15 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 flex items-center gap-2"
           >
+            <Image
+              src="/LeewayLogo.png"
+              alt="Leeway Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
             <Link href="/" className="text-2xl font-bold text-yellow-500">
               Leeway
             </Link>
