@@ -2,40 +2,72 @@
 
 import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  const [videoOpacity, setVideoOpacity] = useState(0);
+  const [contentLoaded, setContentLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    console.log('Page mounted');
+  }, []);
+
+  // Start video and fade timer after content is loaded
+  useEffect(() => {
+    if (contentLoaded && videoRef.current) {
+      videoRef.current.play();
+      // Fade in the video
+      setTimeout(() => {
+        setVideoOpacity(1);
+      }, 100); // Small delay to ensure video has started
+
+      // Start the fade out timer
+      const fadeOutTimer = setTimeout(() => {
+        setVideoOpacity(0);
+      }, 18000);
+      
+      return () => clearTimeout(fadeOutTimer);
+    }
+  }, [contentLoaded]);
+
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
       
       {/* Hero Section */}
       <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden">
-        {/* Background Video Option */}
-        {/* Uncomment the following for video background: */}
+        {/* Background Video */}
         <video
-          autoPlay
-          loop
+          ref={videoRef}
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+            opacity: videoOpacity,
+            transition: 'opacity 1s ease-out'
+          }}
+          onError={(e) => console.error('Video error:', e)}
+          onLoadStart={() => console.log('Video load started')}
+          onLoadedData={() => console.log('Video data loaded')}
+          onTransitionEnd={(e) => {
+            const video = e.target as HTMLVideoElement;
+            if (videoOpacity === 0) {
+              video.pause();
+            }
+          }}
         >
           <source src="Leeway.mp4" type="video/mp4" />
         </video>
        
-
-        {/* Background Image
-        <div 
-          className="absolute top-0 left-0 w-full h-full z-0"
-          style={{
-            backgroundImage: 'url(/your-image.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        /> */}
-
         {/* Overlay for better text readability */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10" />
 
@@ -44,6 +76,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          onAnimationComplete={() => setContentLoaded(true)}
           className="text-center relative z-20"
         >
           <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-200 bg-clip-text text-transparent mb-6">
@@ -83,7 +116,7 @@ export default function Home() {
             Why Choose Leeway?
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {[/* eslint-disable @typescript-eslint/no-unused-vars */
               {
                 title: 'Innovation',
                 description: 'Stay ahead with cutting-edge solutions tailored to your needs',
