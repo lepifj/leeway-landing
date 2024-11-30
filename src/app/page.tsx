@@ -83,7 +83,7 @@ export default function Home() {
             Leeway
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto px-4">
-            Empowering your journey with elegant solutions
+            Empowering your web presence with elegant design
           </p>
           <motion.button
             initial={{ opacity: 0 }}
@@ -119,7 +119,7 @@ export default function Home() {
             {[/* eslint-disable @typescript-eslint/no-unused-vars */
               {
                 title: 'Innovation',
-                description: 'Stay ahead with cutting-edge solutions tailored to your needs',
+                description: 'Stay ahead with cutting-edge web design tailored to your needs',
                 icon: '🚀'
               },
               {
@@ -161,12 +161,12 @@ export default function Home() {
               Our Mission
             </h2>
             <p className="text-xl text-gray-300 mb-12">
-              We believe in transforming businesses through innovative solutions that drive growth and success. Our commitment to excellence and customer satisfaction sets us apart.
+              We believe in transforming businesses through innovative design that drive growth and success. Our commitment to excellence and customer satisfaction sets us apart.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
                 <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Vision</h3>
-                <p className="text-gray-300">To be the leading force in digital transformation and innovation.</p>
+                <p className="text-gray-300">To be the leading force in digital transformation, innovation and design.</p>
               </div>
               <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
                 <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Values</h3>
