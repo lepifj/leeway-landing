@@ -14,6 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log('Page mounted');
+    setContentLoaded(true);
   }, []);
 
   // Start video and fade timer after content is loaded
@@ -91,11 +92,11 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="mt-8 px-8 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-colors"
           >
-            Get Started
+            Learn More
           </motion.button>
         </motion.div>
 
@@ -166,7 +167,9 @@ export default function Home() {
                   className="p-6 rounded-lg border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-colors"
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-2xl font-semibold text-yellow-500 mb-4">{feature.title}</h3>
+                  <h3 className="text-2xl font-semibold text-yellow-500 mb-4">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </motion.div>
               ))}
