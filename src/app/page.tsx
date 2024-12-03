@@ -5,6 +5,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
   const [videoOpacity, setVideoOpacity] = useState(0);
@@ -89,6 +90,9 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
+            onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="mt-8 px-8 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-colors"
           >
             Get Started
@@ -186,14 +190,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-8">
-              Ready to Begin Your Journey?
+              Get in Touch
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Join thousands of satisfied customers who have transformed their business with Leeway.
+              Have questions or ready to transform your business? Send us a message and we'll get back to you shortly.
             </p>
-            <button className="px-8 py-4 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-colors">
-              Get Started Today
-            </button>
+            <ContactForm />
           </motion.div>
         </div>
       </section>
