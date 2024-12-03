@@ -28,16 +28,13 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-yellow-500 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">About Us</a>
+                <a href="#about" className="text-gray-400 hover:text-yellow-500 transition-colors">About Us</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Services</a>
+                <a href="#services" className="text-gray-400 hover:text-yellow-500 transition-colors">Services</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Privacy Policy</a>
+                <a href="#contact" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a>
               </li>
             </ul>
           </motion.div>
@@ -73,7 +70,7 @@ const Footer = () => {
           className="mt-8 pt-8 border-t border-yellow-500/20 text-center"
         >
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Leeway. All rights reserved.
+            {new Date().getFullYear()} Leeway. All rights reserved.
           </p>
         </motion.div>
       </div>

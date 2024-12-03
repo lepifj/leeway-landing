@@ -35,7 +35,7 @@ export default function Home() {
   }, [contentLoaded]);
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="bg-black">
       <Navbar />
       
       {/* Hero Section */}
@@ -109,81 +109,169 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-center text-yellow-500 mb-16"
+      {/* About Section */}
+      <section id="about" className="relative bg-black py-24 px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-900/10 to-black pointer-events-none opacity-50" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            Why Choose Leeway?
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[/* eslint-disable @typescript-eslint/no-unused-vars */
+            <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-16 text-center">
+              About Us
+            </h2>
+            
+            <div className="max-w-4xl mx-auto text-center mb-20">
+              <p className="text-xl text-gray-300 mb-12">
+                We are a close-knit team where design and development converge to create exceptional digital experiences. 
+                Our passion for elegant design and robust development empowers businesses to stand out in the digital landscape. 
+                Every line of code and every design element is crafted with purpose, ensuring your business not only functions flawlessly but looks stunning too.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
+                  <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Vision</h3>
+                  <p className="text-gray-300">To elevate businesses through the perfect blend of striking design and powerful development, creating digital solutions that inspire and perform.</p>
+                </div>
+                <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
+                  <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Values</h3>
+                  <p className="text-gray-300">Excellence in design, mastery in development, and an unwavering commitment to bringing our clients' visions to life.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'Innovation',
+                  description: 'Stay ahead with cutting-edge web design tailored to your needs',
+                  icon: '🚀'
+                },
+                {
+                  title: 'Excellence',
+                  description: 'Delivering quality that exceeds expectations every time',
+                  icon: '⭐'
+                },
+                {
+                  title: 'Growth',
+                  description: 'Scale your business with our powerful tools and support',
+                  icon: '📈'
+                }
+              ].map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="p-6 rounded-lg border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-colors"
+                >
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-2xl font-semibold text-yellow-500 mb-4">{feature.title}</h3>
+                  <p className="text-gray-300">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="relative bg-black py-24 px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-900/10 to-black pointer-events-none opacity-50" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
+              Our Services
+            </h2>
+            <p className="text-xl text-gray-300">
+              Comprehensive digital solutions tailored to your needs
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
               {
-                title: 'Innovation',
-                description: 'Stay ahead with cutting-edge web design tailored to your needs',
-                icon: '🚀'
+                title: 'Web Development',
+                description: 'Modern, responsive websites and web applications built with cutting-edge technologies.',
+                features: ['Custom Website Design', 'E-commerce Solutions', 'Progressive Web Apps', 'CMS Integration'],
+                icon: '🌐'
               },
               {
-                title: 'Excellence',
-                description: 'Delivering quality that exceeds expectations every time',
-                icon: '⭐'
+                title: 'Software Development',
+                description: 'Robust software solutions that streamline your business operations.',
+                features: ['Custom Software Solutions', 'Enterprise Applications', 'API Development', 'Cloud Integration'],
+                icon: '💻'
               },
               {
-                title: 'Growth',
-                description: 'Scale your business with our powerful tools and support',
-                icon: '📈'
+                title: 'Mobile Applications',
+                description: 'Native and cross-platform mobile apps that engage your users.',
+                features: ['iOS Development', 'Android Development', 'Cross-platform Solutions', 'App Maintenance'],
+                icon: '📱'
+              },
+              {
+                title: 'Custom Solutions',
+                description: 'Tailored digital solutions to address your unique challenges.',
+                features: ['Business Analysis', 'Custom Integration', 'Legacy System Updates', 'Technical Consulting'],
+                icon: '⚡'
               }
-            ].map((feature, index) => (
+            ].map((service, index) => (
               <motion.div
-                key={feature.title}
+                key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="p-6 rounded-lg border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-colors"
+                className="group relative p-8 rounded-xl border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-all duration-300"
               >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-semibold text-yellow-500 mb-4">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl">{service.icon}</span>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold text-yellow-500 mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 mb-4">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <motion.li
+                          key={featureIndex}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.2 + featureIndex * 0.1 }}
+                          className="flex items-center text-gray-400"
+                        >
+                          <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></span>
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </ul>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="mt-6 px-6 py-2 bg-yellow-500/10 text-yellow-500 rounded-lg border border-yellow-500/20 hover:bg-yellow-500/20 transition-colors"
+                      onClick={() => {
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Enquire Now
+                    </motion.button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-gradient-to-b from-black via-yellow-900/10 to-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-8">
-              Our Mission
-            </h2>
-            <p className="text-xl text-gray-300 mb-12">
-              We believe in transforming businesses through innovative design that drive growth and success. Our commitment to excellence and customer satisfaction sets us apart.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
-                <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Vision</h3>
-                <p className="text-gray-300">To be the leading force in digital transformation, innovation and design.</p>
-              </div>
-              <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
-                <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Values</h3>
-                <p className="text-gray-300">Innovation, integrity, and excellence in everything we do.</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section id="contact" className="py-20 px-4 bg-gradient-to-b from-black to-yellow-900/20">
-        <div className="max-w-4xl mx-auto text-center">
+      <section id="contact" className="relative bg-black py-24 px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-yellow-900/20 pointer-events-none opacity-50" />
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
