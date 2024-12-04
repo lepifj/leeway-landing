@@ -11,6 +11,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="col-span-1 md:col-span-2"
           >
             <h3 className="text-2xl font-bold text-yellow-500 mb-4">Leeway</h3>
@@ -23,6 +24,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
             <h4 className="text-lg font-semibold text-yellow-500 mb-4">Quick Links</h4>
@@ -43,6 +45,7 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
             <h4 className="text-lg font-semibold text-yellow-500 mb-4">Contact Us</h4>
@@ -66,6 +69,7 @@ const Footer = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.6 }}
           className="mt-8 pt-8 border-t border-yellow-500/20 text-center"
         >

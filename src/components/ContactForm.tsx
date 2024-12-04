@@ -47,6 +47,7 @@ export default function ContactForm() {
     <motion.form
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       onSubmit={handleSubmit}
       className="max-w-lg mx-auto mt-8 space-y-6"
