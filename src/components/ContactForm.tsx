@@ -11,40 +11,64 @@ export default function ContactForm() {
     message: '',
   });
   const [status, setStatus] = useState('');
+  const [isEmailJSInitialized, setIsEmailJSInitialized] = useState(false);
 
   useEffect(() => {
+    // Check if all required environment variables are present
     const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
-    if (!userId) {
-      console.warn('EmailJS User ID is not set');
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    if (!userId || !serviceId || !templateId) {
+      console.error('Missing EmailJS configuration. Please check environment variables.');
       return;
     }
-    emailjs.init(userId);
-    console.log('EmailJS initialized');
+
+    try {
+      emailjs.init({
+        publicKey: userId,
+        blockHeadless: true,
+        limitRate: {
+          id: 'app',
+          throttle: 10000 // Prevent spam
+        }
+      });
+      setIsEmailJSInitialized(true);
+      console.log('EmailJS initialized successfully');
+    } catch (error) {
+      console.error('Failed to initialize EmailJS:', error);
+      setStatus('error');
+    }
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('error');
+      return;
+    }
+
+    // Check EmailJS initialization
+    if (!isEmailJSInitialized) {
+      console.error('EmailJS not initialized');
+      setStatus('error');
+      return;
+    }
+
     setStatus('sending');
-    console.log('Attempting to send email...');
 
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 
     if (!serviceId || !templateId) {
-      console.error('EmailJS configuration is incomplete');
+      console.error('Missing EmailJS service or template ID');
       setStatus('error');
       return;
     }
 
     try {
-      console.log('Sending email with data:', {
-        serviceId,
-        templateId,
-        from_name: formData.name,
-        from_email: formData.email,
-        message_length: formData.message.length,
-      });
-
       const result = await emailjs.send(
         serviceId,
         templateId,
@@ -123,7 +147,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        disabled={status === 'sending'}
+        disabled={status === 'sending' || !isEmailJSInitialized}
         className="w-full px-8 py-4 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === 'sending' ? 'Sending...' : 'Send Message'}
