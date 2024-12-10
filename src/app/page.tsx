@@ -85,7 +85,7 @@ export default function Home() {
             Leeway
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto px-4">
-            Empowering your web presence with elegant design
+          Leading the Way in Modern Web Design and Digital Excellence for You and Your Business.
           </p>
           <motion.button
             initial={{ opacity: 0 }}
@@ -125,18 +125,16 @@ export default function Home() {
             
             <div className="max-w-4xl mx-auto text-center mb-20">
               <p className="text-xl text-gray-300 mb-12">
-                We are a close-knit team where design and development converge to create exceptional digital experiences. 
-                Our passion for elegant design and robust development empowers businesses to stand out in the digital landscape. 
-                Every line of code and every design element is crafted with purpose, ensuring your business not only functions flawlessly but looks stunning too.
+                We are a passionate team driven by the belief that great design and development can transform businesses. Our goal is to help professionals and small businesses thrive by crafting modern, impactful landing pages that leave lasting impressions. We do what we do because we understand the power of a strong digital presence in unlocking new opportunities and success. At Leeway, every project is a step toward helping our clients achieve their goals with creativity, precision, and purpose.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
                 <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
                   <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Vision</h3>
-                  <p className="text-gray-300">To elevate businesses through the perfect blend of striking design and powerful development, creating digital solutions that inspire and perform.</p>
+                  <p className="text-gray-300">To empower businesses with stunning designs and smart development, delivering digital solutions that inspire and succeed.</p>
                 </div>
                 <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/50">
                   <h3 className="text-2xl font-semibold text-yellow-500 mb-4">Our Values</h3>
-                  <p className="text-gray-300">Excellence in design, mastery in development, and an unwavering commitment to bringing our clients' visions to life.</p>
+                  <p className="text-gray-300">Excellence in design, precision in development, and dedication to bringing your vision to life.</p>
                 </div>
               </div>
             </div>
@@ -183,9 +181,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-900/10 to-black pointer-events-none opacity-50" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
@@ -225,13 +224,24 @@ export default function Home() {
             ].map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1
+                }}
                 className="group relative p-8 rounded-xl border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-4xl">{service.icon}</span>
+                  <motion.span 
+                    initial={{ scale: 0.8 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-4xl"
+                  >
+                    {service.icon}
+                  </motion.span>
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold text-yellow-500 mb-3">
                       {service.title}
@@ -241,21 +251,18 @@ export default function Home() {
                     </p>
                     <ul className="space-y-2">
                       {service.features.map((feature, featureIndex) => (
-                        <motion.li
+                        <li
                           key={featureIndex}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.2 + featureIndex * 0.1 }}
                           className="flex items-center text-gray-400"
                         >
                           <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></span>
                           {feature}
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       className="mt-6 px-6 py-2 bg-yellow-500/10 text-yellow-500 rounded-lg border border-yellow-500/20 hover:bg-yellow-500/20 transition-colors"
                       onClick={() => {
                         document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

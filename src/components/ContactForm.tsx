@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,26 +12,61 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState('');
 
+  useEffect(() => {
+    const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+    if (!userId) {
+      console.warn('EmailJS User ID is not set');
+      return;
+    }
+    emailjs.init(userId);
+    console.log('EmailJS initialized');
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    console.log('Attempting to send email...');
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    if (!serviceId || !templateId) {
+      console.error('EmailJS configuration is incomplete');
+      setStatus('error');
+      return;
+    }
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      console.log('Sending email with data:', {
+        serviceId,
+        templateId,
+        from_name: formData.name,
+        from_email: formData.email,
+        message_length: formData.message.length,
       });
 
-      if (response.ok) {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'kelepifj@gmail.com'
+        }
+      );
+
+      console.log('Email sent successfully:', result);
+
+      if (result.status === 200) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
+        console.error('Unexpected response status:', result.status);
         setStatus('error');
       }
     } catch (error) {
+      console.error('Failed to send email:', error);
       setStatus('error');
     }
   };

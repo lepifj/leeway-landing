@@ -15,7 +15,7 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold text-yellow-500 mb-4">Leeway</h3>
             <p className="text-gray-400 max-w-md">
-              Empowering your journey with elegant solutions. We help businesses transform their ideas into reality.
+              Leading the Way in Modern Web Design and Digital Excellence for You and Your Business.
             </p>
           </motion.div>
 
