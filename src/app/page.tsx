@@ -117,6 +117,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-16 text-center">
@@ -161,6 +162,7 @@ export default function Home() {
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
                   className="p-6 rounded-lg border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-colors"
                 >
@@ -181,10 +183,17 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-900/10 to-black pointer-events-none opacity-50" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
+<<<<<<< HEAD
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+=======
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+>>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
@@ -226,11 +235,16 @@ export default function Home() {
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+<<<<<<< HEAD
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
                   duration: 0.5,
                   delay: index * 0.1
                 }}
+=======
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+>>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
                 className="group relative p-8 rounded-xl border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
@@ -253,6 +267,13 @@ export default function Home() {
                       {service.features.map((feature, featureIndex) => (
                         <li
                           key={featureIndex}
+<<<<<<< HEAD
+=======
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.2 + featureIndex * 0.1 }}
+>>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
                           className="flex items-center text-gray-400"
                         >
                           <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></span>
@@ -285,6 +306,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-8">
