@@ -183,17 +183,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-yellow-900/10 to-black pointer-events-none opacity-50" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-<<<<<<< HEAD
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-=======
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
->>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
@@ -235,27 +228,15 @@ export default function Home() {
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-<<<<<<< HEAD
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
                   duration: 0.5,
                   delay: index * 0.1
                 }}
-=======
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
->>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
                 className="group relative p-8 rounded-xl border border-yellow-500/20 bg-black/50 backdrop-blur-sm hover:border-yellow-500/40 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <motion.span 
-                    initial={{ scale: 0.8 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-4xl"
-                  >
-                    {service.icon}
-                  </motion.span>
+                  <span className="text-4xl">{service.icon}</span>
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold text-yellow-500 mb-3">
                       {service.title}
@@ -267,13 +248,6 @@ export default function Home() {
                       {service.features.map((feature, featureIndex) => (
                         <li
                           key={featureIndex}
-<<<<<<< HEAD
-=======
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.2 + featureIndex * 0.1 }}
->>>>>>> 8829d18abcef1273b572d94903d40a5969dfc742
                           className="flex items-center text-gray-400"
                         >
                           <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></span>
@@ -313,7 +287,7 @@ export default function Home() {
               Get in Touch
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Have questions or ready to transform your business? Send us a message and we'll get back to you shortly.
+              Have questions or ready to transform your business? Send us a message and we’ll get back to you shortly.
             </p>
             <ContactForm />
           </motion.div>
