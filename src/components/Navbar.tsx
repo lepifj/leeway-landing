@@ -13,6 +13,7 @@ const Navbar = () => {
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
+    // { name: 'Projects', href: '#work' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -25,13 +26,15 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             className="flex-shrink-0 flex items-center gap-2"
           >
-            <Image
+
+            {/* Logo to Go Here */}
+            {/* <Image
               src="/LeewayLogo.png"
               alt="Leeway Logo"
               width={32}
               height={32}
               className="w-8 h-8"
-            />
+            /> */}
             <Link href="/" className="text-2xl font-bold text-yellow-500">
               Leeway
             </Link>
