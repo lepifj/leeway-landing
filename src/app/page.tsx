@@ -100,7 +100,7 @@ export default function Home() {
             >
               Learn More
             </motion.button>
-            <motion.button
+            {/* <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -110,7 +110,7 @@ export default function Home() {
               className="mt-8 px-8 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-colors"
             >
               Our Work
-            </motion.button>
+            </motion.button> */}
           </div>
         </motion.div>
 
