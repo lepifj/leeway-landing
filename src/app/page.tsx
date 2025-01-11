@@ -308,8 +308,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section - Temporarily hidden until we have projects to showcase */}
-      {/* <section id="work" className="py-20 bg-black">
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -318,79 +318,86 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Projects</h2>
-            <p className="text-xl text-gray-300">Showcasing our current work with our amazing clients who have entrusted.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Pricing Plans</h2>
+            <p className="text-xl text-gray-300">Not sure which one is right for you? Inquire today for more info.
+            Prices listed in FJD and below is only a rough estimate.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="relative h-64">
-                <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                  alt="E-commerce Project"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">E-commerce Platform</h3>
-                <p className="text-gray-300">A modern e-commerce solution with real-time inventory management and secure payment processing.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="relative h-64">
-                <Image
-                  src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80"
-                  alt="Portfolio Website"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Portfolio Website</h3>
-                <p className="text-gray-300">A stunning portfolio website for a creative agency, featuring dynamic animations and responsive design.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="relative h-64">
-                <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                  alt="Web Application"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">SaaS Dashboard</h3>
-                <p className="text-gray-300">A comprehensive SaaS dashboard with real-time analytics, user management, and customizable widgets.</p>
-              </div>
-            </motion.div>
+            {[
+              {
+                title: 'Basic Plan',
+                price: '$800',
+                maintenance: '$100 per month for maintenance',
+                suitedFor: 'Ideal for small businesses or individuals looking to establish an online presence with a professional website.',
+                features: [
+                  '1 Custom Landing Page Design',
+                  'Mobile-Responsive Layout',
+                  'Basic SEO Setup',
+                  'Contact Form Integration',
+                  'Social Media Links',
+                  'Delivery in approximately 10 Days'
+                ]
+              },
+              {
+                title: 'Standard Plan',
+                price: '$1500',
+                maintenance: '$200 per month for maintenance',
+                suitedFor: 'Perfect for businesses that need more functionality, such as booking systems and email automation.',
+                features: [
+                  'Up to 5 Custom Pages (Home, About, Services, Blog, Contact)',
+                  'Mobile-Responsive Design',
+                  'Standard SEO Optimization',
+                  'CMS for Blog or Portfolio',
+                  'Basic Animations and Interactions',
+                  'Contact Form + Email Notifications',
+                  'Domain Integration Support',
+                  'Delivery in approximately 30 Days'
+                ]
+              },
+              {
+                title: 'Premium Plan',
+                price: '$3000 <',
+                maintenance: '$400 per month for maintenance',
+                suitedFor: 'Best for larger businesses or those needing a comprehensive digital solution with advanced features.',
+                features: [
+                  'Up to 10 Custom Pages',
+                  'Advanced Mobile-Responsive Design',
+                  'Advanced SEO Optimization',
+                  'CMS Integration for Blog, Portfolio, or Products',
+                  'Premium Animations and Interactions',
+                  'E-commerce Functionality',
+                  'Third-Party Integrations (e.g., Analytics, CRM, Payment Gateways)',
+                  'Priority Support',
+                  'Delivery in approximately 60 Days'
+                ]
+              },
+            ].map((plan, index) => (
+              <motion.div
+                key={plan.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-zinc-900 p-8 rounded-xl hover:transform hover:scale-105 transition-all duration-300"
+              >
+                <h3 className="text-2xl font-bold mb-4">{plan.title}</h3>
+                <p className="text-yellow-500 text-3xl font-bold mb-4">{plan.price}</p>
+                <p className="text-gray-300 mb-4">{plan.maintenance}</p>
+                <p className="text-gray-300 mb-4">{plan.suitedFor}</p>
+                <ul className="text-gray-300 mb-4 list-disc list-inside">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="mb-2">{feature}</li>
+                  ))}
+                </ul>
+                <button className="mt-4 px-8 py-3 bg-yellow-500 text-black font-semibold rounded-full hover:bg-yellow-400 transition-colors">
+                  Choose Plan
+                </button>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* CTA Section */}
       <section id="contact" className="relative bg-black py-24 px-4">
